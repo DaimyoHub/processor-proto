@@ -1,5 +1,18 @@
+/**
+ * @file memory.hpp
+ * @author Alexis Pocquet
+ *
+ * @date 2022-03-27
+ *
+ * @copyright Copyright (c) 2022 Alexis Pocquet
+ */
+
+#pragma once
+
 #include <cstddef>
 #include <vector>
+
+namespace cpu::ctx {
 
 class Mem {
 private:
@@ -34,3 +47,5 @@ public:
   std::byte operator[](std::size_t idx) const;
   std::byte &operator[](std::size_t idx);
 };
+
+} // namespace cpu::ctx

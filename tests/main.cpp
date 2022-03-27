@@ -1,11 +1,11 @@
+#include <cpu/context/extractor.hpp>
 #include <cpu/context/memory.hpp>
 #include <cstddef>
 #include <iostream>
 #include <vector>
 
 int main() {
-  auto vec = std::vector<std::byte>{std::byte(1), std::byte(2), std::byte(3)};
-  auto mem = Mem::from_vec(std::move(vec));
+  std::string text = "0xff 0x06 0x03 0x06";
 
-  mem[3];
+  auto res = cpu::ctx::detail::parse_mem_string(text);
 }

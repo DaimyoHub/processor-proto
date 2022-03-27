@@ -3,6 +3,8 @@
 #include <cpu/utils/assertions.hpp>
 #include <cstddef>
 
+namespace cpu::ctx {
+
 Mem Mem::from_vec(std::vector<std::byte> vec) {
   Mem obj;
   obj.native_handle_ = std::move(vec);
@@ -29,3 +31,5 @@ std::byte &Mem::operator[](std::size_t idx) {
 
   return native_handle_[idx];
 }
+
+} // namespace cpu::ctx
