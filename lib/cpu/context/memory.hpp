@@ -9,6 +9,7 @@
 
 #pragma once
 
+#include <cpu/utils/obs_pointer.hpp>
 #include <cstddef>
 #include <vector>
 
@@ -19,6 +20,8 @@ private:
   // The memory object is based on a simple native handle representing a
   // contiguous sequence of bytes.
   std::vector<std::byte> native_handle_;
+
+  std::size_t bytes_count_;
 
 public:
   /**
@@ -46,6 +49,26 @@ public:
    */
   std::byte operator[](std::size_t idx) const;
   std::byte &operator[](std::size_t idx);
+
+  /**
+   * Gets the first byte contained in memory. This is a utility function mainly
+   * used for for-loops.
+   *
+   * @return std::byte&  The first byte in memory.
+   */
+  util::ObsPtr<std::byte> begin();
+  util::ObsPtr<std::byte const> begin() const;
+
+  /**
+   * Gets the last byte contained in memory. This is a utility function mainly
+   * used for for-loops.
+   *
+   * @return std::byte&  The last byte in memory.
+   */
+  util::ObsPtr<std::byte> end();
+  util::ObsPtr<std::byte const> end() const;
+
+  std::size_t size() const;
 };
 
 } // namespace cpu::ctx

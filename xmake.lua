@@ -1,21 +1,22 @@
 add_rules("mode.debug", "mode.release")
 
+set_toolchains("gcc")
+set_languages("cxx20")
+
 -- Executable binaries
-target("app")
-    set_kind("binary")
-    set_languages("cxx20")
-    add_files("app/*.cpp")
-    add_includedirs("lib/")
+--target("app")
+--    set_kind("binary")
+--    add_files("app/*.cpp")
+--    add_includedirs("lib/")
 
-    add_deps("context")
+--    add_deps("context")
 
-    if is_mode("debug") then
-      add_defines("DEBUG")
-    end
+--    if is_mode("debug") then
+--      add_defines("DEBUG")
+--    end
 
 target("tests")
   set_kind("binary")
-  set_languages("cxx20")
   add_files("tests/*.cpp")
   add_includedirs("lib/")
 
@@ -29,7 +30,6 @@ target("tests")
 -- Library binaries
 target("context")
   set_kind("static")
-  set_languages("cxx20")
   add_files("src/context/*.cpp")
   add_includedirs("lib/")
 

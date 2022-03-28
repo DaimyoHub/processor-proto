@@ -1,11 +1,16 @@
+#include "cpu/utils/obs_pointer.hpp"
 #include <cpu/context/extractor.hpp>
 #include <cpu/context/memory.hpp>
 #include <cstddef>
 #include <iostream>
+#include <type_traits>
 #include <vector>
 
 int main() {
-  std::string text = "0xff 0x06 0x03 0x06";
+  using namespace cpu::ctx;
 
-  auto res = cpu::ctx::detail::parse_mem_string(text);
+  auto mem = extract_mem_from_file("/home/daimyo/dev/cpu/resources/test.mf");
+
+  for (auto e : mem)
+    std::cout << static_cast<int>(e) << ' ';
 }
