@@ -7,7 +7,8 @@
  * @copyright Copyright (c) 2022 Alexis Pocquet
  */
 
-#include <cpu/context/extractor.hpp>
+#include <cpu/mem/extract.hpp>
+#include <cpu/mem/mem.hpp>
 #include <cstddef>
 #include <fstream>
 #include <iostream>
@@ -15,7 +16,7 @@
 #include <string>
 #include <vector>
 
-namespace cpu::ctx {
+namespace cpu::mem {
 
 namespace detail {
 
@@ -85,4 +86,4 @@ Mem extract_mem_from_file(std::string filename) {
   return Mem::from_vec(detail::parse_mem_string(mem_string));
 }
 
-} // namespace cpu::ctx
+} // namespace cpu::mem

@@ -20,7 +20,7 @@ target("tests")
   add_files("tests/*.cpp")
   add_includedirs("lib/")
 
-  add_deps("context")
+  add_deps("mem")
 
   if is_mode("debug") then
     add_defines("DEBUG")
@@ -28,9 +28,9 @@ target("tests")
 
 
 -- Library binaries
-target("context")
+target("mem")
   set_kind("static")
-  add_files("src/context/*.cpp")
+  add_files("src/mem/*.cpp")
   add_includedirs("lib/")
 
   if is_mode("debug") then

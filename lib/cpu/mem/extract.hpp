@@ -1,5 +1,5 @@
 /**
- * @file extractor.hpp
+ * @file extract.hpp
  * @author Alexis Pocquet
  *
  * @date 2022-03-27
@@ -12,7 +12,7 @@
 
 #pragma once
 
-#include <cpu/context/memory.hpp>
+#include <cpu/mem/mem.hpp>
 #include <cstddef>
 #include <exception>
 #include <fstream>
@@ -20,7 +20,7 @@
 #include <string_view>
 #include <vector>
 
-namespace cpu::ctx {
+namespace cpu::mem {
 
 namespace detail {
 
@@ -74,4 +74,4 @@ Mem extract_mem_from_file(std::string filename);
  */
 Mem extract_mem_from_input(std::istream input_stream);
 
-} // namespace cpu::ctx
+} // namespace cpu::mem

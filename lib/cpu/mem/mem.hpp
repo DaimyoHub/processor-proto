@@ -1,5 +1,5 @@
 /**
- * @file memory.hpp
+ * @file mem.hpp
  * @author Alexis Pocquet
  *
  * @date 2022-03-27
@@ -9,11 +9,14 @@
 
 #pragma once
 
-#include <cpu/utils/obs_pointer.hpp>
+#include <cpu/util/obs_ptr.hpp>
 #include <cstddef>
 #include <vector>
 
-namespace cpu::ctx {
+namespace cpu::mem {
+
+class Byte;
+class ROByte;
 
 class Mem {
 private:
@@ -42,15 +45,6 @@ public:
 
 public:
   /**
-   * Fetches the owned data at the given index.
-   *
-   * @param idx The index of the location of the looked-for data.
-   * @return std::byte The data looked for.
-   */
-  std::byte operator[](std::size_t idx) const;
-  std::byte &operator[](std::size_t idx);
-
-  /**
    * Gets the first byte contained in memory. This is a utility function mainly
    * used for for-loops.
    *
@@ -68,7 +62,20 @@ public:
   util::ObsPtr<std::byte> end();
   util::ObsPtr<std::byte const> end() const;
 
-  std::size_t size() const;
+  /**
+   * Gets the wanted byte at te given index.
+   *
+   * @param idx The index of the byte in memory.
+   */
+  Byte operator[](std::size_t idx);
+  ROByte operator[](std::size_t idx) const;
+
+  /**
+   * Gets the count of bytes contained by the memory chunck.
+   *
+   * @return std::size_t
+   */
+  std::size_t bytes_count() const;
 };
 
-} // namespace cpu::ctx
+} // namespace cpu::mem

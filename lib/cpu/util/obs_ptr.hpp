@@ -1,5 +1,5 @@
 /**
- * @file obs_pointer.hpp
+ * @file obs_ptr.hpp
  * @author  Alexis Pocquet
  *
  * @date 2022-03-28

@@ -10,3 +10,7 @@
 # 03.28
   - Improve memory extractors
     - We are now able to extract memory from a file !
+
+# 03.29
+  - Add memory read/write operations support
+    - We are able to properly read/write memory !
