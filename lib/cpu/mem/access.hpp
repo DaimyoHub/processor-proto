@@ -22,7 +22,7 @@ class ROByte;
  * @param idx The index of the byte to read.
  * @return std::byte The read byte.
  */
-std::byte read(Byte byte);
+int read(Byte byte);
 
 /**
  * Reads memory at the given index.
@@ -30,7 +30,7 @@ std::byte read(Byte byte);
  * @param idx The index of the byte to read.
  * @return std::byte The read byte.
  */
-std::byte read(ROByte byte);
+int read(ROByte byte);
 
 /**
  * If memory is not read-only, writes the given data in it, at the given
@@ -39,7 +39,7 @@ std::byte read(ROByte byte);
  * @param idx The index of the byte to write.
  * @param data The data to write in.
  */
-void write(Byte byte, std::byte data);
+void write(Byte byte, int data);
 
 /**
  * This function is a shortcut for cpu::mem::read. Return type is an integer,

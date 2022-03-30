@@ -20,7 +20,7 @@ namespace cpu::mem {
 
 namespace detail {
 
-std::vector<std::byte> parse_mem_string(std::string mem) {
+std::vector<int> parse_mem_string(std::string mem) {
   auto bytes_count = get_bytes_count_from_mem_string(mem);
 
   auto make_mem_vec_string = [&]() {
@@ -37,11 +37,11 @@ std::vector<std::byte> parse_mem_string(std::string mem) {
 
   auto mem_vec_string = make_mem_vec_string();
 
-  std::vector<std::byte> mem_vec;
+  std::vector<int> mem_vec;
   mem_vec.reserve(bytes_count);
 
   for (auto &&e : mem_vec_string)
-    mem_vec.emplace_back(std::byte(std::stoi(e.c_str(), 0, 16)));
+    mem_vec.emplace_back(std::stoi(e.c_str(), 0, 16));
 
   return mem_vec;
 }

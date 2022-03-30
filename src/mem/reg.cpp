@@ -7,7 +7,7 @@ namespace cpu::mem {
 Reg Reg::with_label(std::string_view label) {
   auto reg = Reg();
 
-  reg.value_ = std::byte(0);
+  reg.value_ = 0;
   reg.description_ = std::string();
   reg.label_ = label;
 

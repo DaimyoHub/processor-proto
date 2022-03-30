@@ -43,13 +43,14 @@ public:
    * @return mem::Mem&
    */
   mem::Mem &get_mem();
+  mem::Mem const &get_mem() const;
 
   /**
    * Gets the current executed code.
    *
    * @return mem::Mem const&
    */
-  mem::Mem const &get_code();
+  mem::Mem const &get_code() const;
 
   /**
    * Loads the given code into the code section of memory.
@@ -64,6 +65,7 @@ public:
    * @return RegTable&
    */
   RegTable &get_reg();
+  RegTable const &get_reg() const;
 
 private:
   /**

@@ -7,7 +7,7 @@
 
 namespace cpu::mem {
 
-Mem Mem::from_vec(std::vector<std::byte> vec) {
+Mem Mem::from_vec(std::vector<int> vec) {
   Mem obj;
   obj.bytes_count_ = vec.size();
   obj.native_handle_ = std::move(vec);
@@ -26,28 +26,26 @@ Mem &Mem::operator=(Mem &&other) {
   return *this;
 }
 
-util::ObsPtr<std::byte> Mem::begin() { return &native_handle_[0]; }
+util::ObsPtr<int> Mem::begin() { return &native_handle_[0]; }
 
-util::ObsPtr<std::byte const> Mem::begin() const { return &native_handle_[0]; }
+util::ObsPtr<int const> Mem::begin() const { return &native_handle_[0]; }
 
-util::ObsPtr<std::byte> Mem::end() {
-  return &native_handle_[native_handle_.size()];
-}
+util::ObsPtr<int> Mem::end() { return &native_handle_[native_handle_.size()]; }
 
-util::ObsPtr<std::byte const> Mem::end() const {
+util::ObsPtr<int const> Mem::end() const {
   return &native_handle_[native_handle_.size()];
 }
 
 Byte Mem::operator[](std::size_t idx) {
   ASSERT_IS_INDEX_OF(idx, get_bytes_count());
 
-  return Byte::from_ptr(&native_handle_[idx]);
+  return Byte::from_ptr(reinterpret_cast<int *>(&native_handle_[idx]));
 }
 
 ROByte Mem::operator[](std::size_t idx) const {
   ASSERT_IS_INDEX_OF(idx, get_bytes_count());
 
-  return ROByte::from_ptr(&native_handle_[idx]);
+  return ROByte::from_ptr(reinterpret_cast<int const *>(&native_handle_[idx]));
 }
 
 std::size_t Mem::get_bytes_count() const { return native_handle_.size(); }

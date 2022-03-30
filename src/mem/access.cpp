@@ -8,11 +8,11 @@
 
 namespace cpu::mem {
 
-std::byte read(Byte byte) { return *byte.raw_byte_; }
+int read(Byte byte) { return *byte.raw_byte_; }
 
-std::byte read(ROByte byte) { return *byte.raw_byte_; }
+int read(ROByte byte) { return *byte.raw_byte_; }
 
-void write(Byte byte, std::byte data) {
+void write(Byte byte, int data) {
 #if defined(CPU_MULTITHREADED)
   std::lock_guard(byte.mutex_);
 #endif
@@ -23,10 +23,6 @@ int in(ROByte byte) { return static_cast<int>(read(byte)); }
 
 int in(Byte byte) { return static_cast<int>(read(byte)); }
 
-void out(Byte byte, int data) {
-  ASSERT_IS_IN_RANGE(0x00, 0xff, data);
-
-  write(byte, std::byte(data));
-}
+void out(Byte byte, int data) { write(byte, data); }
 
 } // namespace cpu::mem

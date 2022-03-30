@@ -30,7 +30,7 @@ namespace detail {
  * @param mem The memory formatted as a string
  * @return std::vector<std::byte>  The constructed vector
  */
-std::vector<std::byte> parse_mem_string(std::string mem);
+std::vector<int> parse_mem_string(std::string mem);
 
 struct UnableToOpenMemFile : public std::exception {
 

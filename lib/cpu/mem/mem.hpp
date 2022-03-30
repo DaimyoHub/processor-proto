@@ -22,7 +22,7 @@ class Mem {
 private:
   // The memory object is based on a simple native handle representing a
   // contiguous sequence of bytes.
-  std::vector<std::byte> native_handle_;
+  std::vector<int> native_handle_;
 
   std::size_t bytes_count_;
 
@@ -33,7 +33,7 @@ public:
    * @param vec The source vector.
    * @return Mem
    */
-  static Mem from_vec(std::vector<std::byte> vec);
+  static Mem from_vec(std::vector<int> vec);
 
   Mem() = default;
 
@@ -50,8 +50,8 @@ public:
    *
    * @return std::byte&  The first byte in memory.
    */
-  util::ObsPtr<std::byte> begin();
-  util::ObsPtr<std::byte const> begin() const;
+  util::ObsPtr<int> begin();
+  util::ObsPtr<int const> begin() const;
 
   /**
    * Gets the last byte contained in memory. This is a utility function mainly
@@ -59,8 +59,8 @@ public:
    *
    * @return std::byte&  The last byte in memory.
    */
-  util::ObsPtr<std::byte> end();
-  util::ObsPtr<std::byte const> end() const;
+  util::ObsPtr<int> end();
+  util::ObsPtr<int const> end() const;
 
   /**
    * Gets the wanted byte at te given index.

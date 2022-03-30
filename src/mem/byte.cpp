@@ -5,14 +5,14 @@
 
 namespace cpu::mem {
 
-ROByte ROByte::from_ptr(util::ObsPtr<std::byte const> ptr) {
+ROByte ROByte::from_ptr(util::ObsPtr<int const> ptr) {
   auto byte = ROByte();
   byte.raw_byte_ = ptr;
 
   return byte;
 }
 
-Byte Byte::from_ptr(util::ObsPtr<std::byte> ptr) {
+Byte Byte::from_ptr(util::ObsPtr<int> ptr) {
   auto byte = Byte();
   byte.raw_byte_ = ptr;
 

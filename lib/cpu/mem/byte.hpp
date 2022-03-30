@@ -23,13 +23,13 @@ namespace cpu::mem {
  * use memory without responsibilities issues.
  */
 class ROByte {
-  friend std::byte read(ROByte byte);
+  friend int read(ROByte byte);
 
 private:
 #if defined(CPU_MULTITHREADED)
   std::mutex mutex_;
 #endif
-  util::ObsPtr<std::byte const> raw_byte_;
+  util::ObsPtr<int const> raw_byte_;
 
 public:
   ROByte() = default;
@@ -46,7 +46,7 @@ public:
    * @param ptr A pointer to the raw byte.
    * @return ROByte
    */
-  static ROByte from_ptr(util::ObsPtr<std::byte const> ptr);
+  static ROByte from_ptr(util::ObsPtr<int const> ptr);
 };
 
 /**
@@ -55,14 +55,14 @@ public:
  * use memory without responsibilities issues.
  */
 class Byte {
-  friend std::byte read(Byte byte);
-  friend void write(Byte byte, std::byte data);
+  friend int read(Byte byte);
+  friend void write(Byte byte, int data);
 
 private:
 #if defined(CPU_MULTITHREADED)
   std::mutex mutex_;
 #endif
-  util::ObsPtr<std::byte> raw_byte_;
+  util::ObsPtr<int> raw_byte_;
 
 public:
   Byte() = default;
@@ -79,7 +79,7 @@ public:
    * @param ptr A pointer to the raw byte.
    * @return Byte
    */
-  static Byte from_ptr(util::ObsPtr<std::byte> ptr);
+  static Byte from_ptr(util::ObsPtr<int> ptr);
 };
 
 } // namespace cpu::mem

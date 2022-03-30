@@ -37,11 +37,13 @@ Ctx &Ctx::operator=(Ctx &&other) {
 }
 
 mem::Mem &Ctx::get_mem() { return memory_; }
+mem::Mem const &Ctx::get_mem() const { return memory_; }
 
-mem::Mem const &Ctx::get_code() { return code_; }
+mem::Mem const &Ctx::get_code() const { return code_; }
 
 void Ctx::load_code(mem::Mem code) { code_ = std::move(code); }
 
 RegTable &Ctx::get_reg() { return registers_; }
+RegTable const &Ctx::get_reg() const { return registers_; }
 
 } // namespace cpu::core

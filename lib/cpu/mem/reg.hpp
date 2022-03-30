@@ -19,7 +19,7 @@ class Byte;
 
 class Reg {
 private:
-  std::byte value_;
+  int value_;
   std::string description_;
   std::string label_;
 
