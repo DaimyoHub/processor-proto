@@ -21,13 +21,11 @@ void Br::impl(mem::Byte pc_handle, std::size_t bytes_count) {
   consume_hint--;
 }
 
-/*
 void Br::operator()(core::Ctx &ctx) {
   auto pc_handle = ctx.get_reg().program_counter.get();
   auto bytes_count = ctx.get_mem().get_bytes_count();
 
   impl(pc_handle, bytes_count);
 }
-*/
 
 } // namespace cpu::isa
