@@ -26,6 +26,9 @@ class ROByte {
   friend std::byte read(ROByte byte);
 
 private:
+#if defined(CPU_MULTITHREADED)
+  std::mutex mutex_;
+#endif
   util::ObsPtr<std::byte const> raw_byte_;
 
 public:
@@ -56,6 +59,9 @@ class Byte {
   friend void write(Byte byte, std::byte data);
 
 private:
+#if defined(CPU_MULTITHREADED)
+  std::mutex mutex_;
+#endif
   util::ObsPtr<std::byte> raw_byte_;
 
 public:

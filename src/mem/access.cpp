@@ -2,13 +2,22 @@
 #include <cpu/mem/byte.hpp>
 #include <cpu/util/assert.hpp>
 
+#if defined(CPU_MULTITHREADED)
+#include <mutex>
+#endif
+
 namespace cpu::mem {
 
 std::byte read(Byte byte) { return *byte.raw_byte_; }
 
 std::byte read(ROByte byte) { return *byte.raw_byte_; }
 
-void write(Byte byte, std::byte data) { *byte.raw_byte_ = data; }
+void write(Byte byte, std::byte data) {
+#if defined(CPU_MULTITHREADED)
+  std::lock_guard(byte.mutex_);
+#endif
+  *byte.raw_byte_ = data;
+}
 
 int in(ROByte byte) { return static_cast<int>(read(byte)); }
 
