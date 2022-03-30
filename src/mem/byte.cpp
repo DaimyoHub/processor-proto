@@ -33,4 +33,18 @@ Byte &Byte::operator=(Byte &&other) {
   return *this;
 }
 
+Byte::Byte(Byte const &other) : raw_byte_(other.raw_byte_) {}
+
+Byte &Byte::operator=(Byte const &other) {
+  raw_byte_ = other.raw_byte_;
+  return *this;
+}
+
+ROByte::ROByte(ROByte const &other) : raw_byte_(other.raw_byte_) {}
+
+ROByte &ROByte::operator=(ROByte const &other) {
+  raw_byte_ = other.raw_byte_;
+  return *this;
+}
+
 } // namespace cpu::mem
