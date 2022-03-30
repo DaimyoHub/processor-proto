@@ -1,3 +1,4 @@
+#include <cpu/isa/branch.hpp>
 #include <cpu/mem/access.hpp>
 #include <cpu/mem/byte.hpp>
 #include <cpu/mem/extract.hpp>
@@ -10,14 +11,16 @@
 #include <vector>
 
 int main() {
-  using namespace cpu::mem;
+  using namespace cpu;
 
-  auto reg = Reg::with_label("dick");
-  reg.describe("Hello world");
+  auto reg = mem::Reg::with_label("pc");
+  mem::out(reg.get(), 3);
 
-  auto content = reg.get();
-  out(content, 78);
+  auto br = isa::Br::prepare(mem::Addr::from(4));
 
-  std::cout << reg.get_label() << ": " << in(reg.get()) << std::endl;
-  std::cout << reg.get_description() << std::endl;
+  std::cout << isa::is_instr_consumed(br) << std::endl;
+
+  br.impl(reg.get(), 10);
+
+  std::cout << isa::is_instr_consumed(br) << std::endl;
 }

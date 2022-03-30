@@ -20,7 +20,7 @@ target("tests")
   add_files("tests/*.cpp")
   add_includedirs("lib/")
 
-  add_deps("mem")
+  add_deps("mem", "isa", "core")
 
   if is_mode("debug") then
     add_defines("DEBUG")
@@ -40,6 +40,17 @@ target("mem")
 target("isa")
   set_kind("static")
   add_files("src/isa/*.cpp")
+  add_includedirs("lib/")
+
+  add_deps("core")
+
+  if is_mode("debug") then
+    add_defines("DEBUG")
+  end
+
+target("core")
+  set_kind("static")
+  add_files("src/core/*.cpp")
   add_includedirs("lib/")
 
   if is_mode("debug") then
