@@ -1,7 +1,7 @@
-#include "cpu/util/obs_ptr.hpp"
 #include <cpu/mem/byte.hpp>
 #include <cpu/mem/mem.hpp>
 #include <cpu/util/assert.hpp>
+#include <cpu/util/obs_ptr.hpp>
 
 namespace cpu::mem {
 
@@ -17,6 +17,20 @@ Byte Byte::from_ptr(util::ObsPtr<std::byte> ptr) {
   byte.raw_byte_ = ptr;
 
   return byte;
+}
+
+ROByte::ROByte(ROByte &&other) : raw_byte_(other.raw_byte_) {}
+
+ROByte &ROByte::operator=(ROByte &&other) {
+  raw_byte_ = other.raw_byte_;
+  return *this;
+}
+
+Byte::Byte(Byte &&other) : raw_byte_(other.raw_byte_) {}
+
+Byte &Byte::operator=(Byte &&other) {
+  raw_byte_ = other.raw_byte_;
+  return *this;
 }
 
 } // namespace cpu::mem

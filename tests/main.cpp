@@ -2,6 +2,7 @@
 #include <cpu/mem/byte.hpp>
 #include <cpu/mem/extract.hpp>
 #include <cpu/mem/mem.hpp>
+#include <cpu/mem/reg.hpp>
 #include <cpu/util/obs_ptr.hpp>
 #include <cstddef>
 #include <iostream>
@@ -11,8 +12,12 @@
 int main() {
   using namespace cpu::mem;
 
-  auto mem = extract_mem_from_file("/home/daimyo/dev/cpu/res/null_mem.mf");
+  auto reg = Reg::with_label("dick");
+  reg.describe("Hello world");
 
-  out(mem[6], 78);
-  std::cout << in(mem[6]) << std::endl;
+  auto content = reg.get();
+  out(content, 78);
+
+  std::cout << reg.get_label() << ": " << in(reg.get()) << std::endl;
+  std::cout << reg.get_description() << std::endl;
 }

@@ -22,7 +22,7 @@ class ROByte;
  * @param idx The index of the byte to read.
  * @return std::byte The read byte.
  */
-std::byte read(Byte byte);
+std::byte read(Byte const &byte);
 
 /**
  * Reads memory at the given index.
@@ -30,7 +30,7 @@ std::byte read(Byte byte);
  * @param idx The index of the byte to read.
  * @return std::byte The read byte.
  */
-std::byte read(ROByte byte);
+std::byte read(ROByte const &byte);
 
 /**
  * If memory is not read-only, writes the given data in it, at the given
@@ -39,7 +39,7 @@ std::byte read(ROByte byte);
  * @param idx The index of the byte to write.
  * @param data The data to write in.
  */
-void write(Byte byte, std::byte data);
+void write(Byte &byte, std::byte data);
 
 /**
  * This function is a shortcut for cpu::mem::read. Return type is an integer,
@@ -50,7 +50,7 @@ void write(Byte byte, std::byte data);
  * @param byte The byte to read.
  * @return int  The value of the read byte.
  */
-int in(ROByte byte);
+int in(ROByte const &byte);
 
 /**
  * This function is a shortcut for cpu::mem::read. Return type is an integer,
@@ -61,7 +61,7 @@ int in(ROByte byte);
  * @param byte The byte to read.
  * @return int  The value of the read byte.
  */
-int in(Byte byte);
+int in(Byte const &byte);
 
 /**
  * This function is a shortcut from cpu::mem::write. Input data is in integer
@@ -72,6 +72,6 @@ int in(Byte byte);
  * @param byte The byte to write.
  * @param data The data to write.
  */
-void out(Byte byte, int data);
+void out(Byte &byte, int data);
 
 } // namespace cpu::mem

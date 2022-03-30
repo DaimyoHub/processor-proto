@@ -4,18 +4,18 @@
 
 namespace cpu::mem {
 
-std::byte read(Byte byte) { return *byte.raw_byte_; }
+std::byte read(Byte const &byte) { return *byte.raw_byte_; }
 
-std::byte read(ROByte byte) { return *byte.raw_byte_; }
+std::byte read(ROByte const &byte) { return *byte.raw_byte_; }
 
-void write(Byte byte, std::byte data) { *byte.raw_byte_ = data; }
+void write(Byte &byte, std::byte data) { *byte.raw_byte_ = data; }
 
-int in(ROByte byte) { return static_cast<int>(read(byte)); }
+int in(ROByte const &byte) { return static_cast<int>(read(byte)); }
 
-int in(Byte byte) { return static_cast<int>(read(byte)); }
+int in(Byte const &byte) { return static_cast<int>(read(byte)); }
 
-void out(Byte byte, int data) {
-  IS_IN_RANGE(0x00, 0xff, data);
+void out(Byte &byte, int data) {
+  ASSERT_IS_IN_RANGE(0x00, 0xff, data);
 
   write(byte, std::byte(data));
 }

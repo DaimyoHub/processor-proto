@@ -75,7 +75,7 @@ public:
    *
    * @return std::size_t
    */
-  std::size_t bytes_count() const;
+  std::size_t get_bytes_count() const;
 };
 
 } // namespace cpu::mem

@@ -23,13 +23,19 @@ namespace cpu::mem {
  * use memory without responsibilities issues.
  */
 class ROByte {
-  friend std::byte read(ROByte byte);
+  friend std::byte read(ROByte const &byte);
 
 private:
   util::ObsPtr<std::byte const> raw_byte_;
 
 public:
   ROByte() = default;
+
+  ROByte(ROByte &&other);
+  ROByte &operator=(ROByte &&other);
+
+  ROByte(ROByte const &other) = delete;
+  ROByte &operator=(ROByte const &other) = delete;
 
   /**
    * Constructs a read-only byte box from a given raw byte in memory.
@@ -46,14 +52,20 @@ public:
  * use memory without responsibilities issues.
  */
 class Byte {
-  friend std::byte read(Byte byte);
-  friend void write(Byte byte, std::byte data);
+  friend std::byte read(Byte const &byte);
+  friend void write(Byte &byte, std::byte data);
 
 private:
   util::ObsPtr<std::byte> raw_byte_;
 
 public:
   Byte() = default;
+
+  Byte(Byte &&other);
+  Byte &operator=(Byte &&other);
+
+  Byte(Byte const &other) = delete;
+  Byte &operator=(Byte const &other) = delete;
 
   /**
    * Constructs a byte box from a given raw byte in memory.

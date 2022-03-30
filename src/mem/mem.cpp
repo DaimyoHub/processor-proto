@@ -39,17 +39,17 @@ util::ObsPtr<std::byte const> Mem::end() const {
 }
 
 Byte Mem::operator[](std::size_t idx) {
-  ASSERT_IS_INDEX_OF(idx, bytes_count());
+  ASSERT_IS_INDEX_OF(idx, get_bytes_count());
 
   return Byte::from_ptr(&native_handle_[idx]);
 }
 
 ROByte Mem::operator[](std::size_t idx) const {
-  ASSERT_IS_INDEX_OF(idx, bytes_count());
+  ASSERT_IS_INDEX_OF(idx, get_bytes_count());
 
   return ROByte::from_ptr(&native_handle_[idx]);
 }
 
-std::size_t Mem::bytes_count() const { return native_handle_.size(); }
+std::size_t Mem::get_bytes_count() const { return native_handle_.size(); }
 
 } // namespace cpu::mem

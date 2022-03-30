@@ -37,6 +37,15 @@ target("mem")
     add_defines("DEBUG")
   end
 
+target("isa")
+  set_kind("static")
+  add_files("src/isa/*.cpp")
+  add_includedirs("lib/")
+
+  if is_mode("debug") then
+    add_defines("DEBUG")
+  end
+
 --target("control")
 --  set_kind("static")
 --  add_files("src/control/*.cpp")
