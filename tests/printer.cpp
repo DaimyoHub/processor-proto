@@ -27,12 +27,25 @@ void print_mem(cpu::mem::Mem const &mem, int pc_state) {
 }
 
 void print_reg(cpu::core::RegTable const &regs) {
-  std::cout << regs.program_counter.get_label() << ":\t "
-            << "\e[102;30m" << cpu::mem::in(regs.program_counter.get())
-            << "\e[49;39m" << '\n';
+  std::cout << regs.pc.get_label() << ":\t "
+            << "\e[102;30m" << cpu::mem::in(regs.pc.get()) << "\e[49;39m"
+            << '\n';
+
+  std::cout << regs.cmp.get_label() << ":\t " << cpu::mem::in(regs.cmp.get())
+            << '\t' << regs.lhs.get_label() << ":\t "
+            << cpu::mem::in(regs.lhs.get()) << '\n';
+
+  std::cout << regs.a0.get_label() << ":\t " << cpu::mem::in(regs.a0.get())
+            << '\t' << regs.rhs.get_label() << ":\t "
+            << cpu::mem::in(regs.rhs.get()) << '\n';
+
+  std::cout << regs.a1.get_label() << ":\t " << cpu::mem::in(regs.a1.get())
+            << '\t' << regs.dst.get_label() << ":\t "
+            << cpu::mem::in(regs.dst.get()) << '\n';
 }
 
 void print_ctx(cpu::core::Ctx const &ctx) {
   print_reg(ctx.get_reg());
-  print_mem(ctx.get_mem(), cpu::mem::in(ctx.get_reg().program_counter.get()));
+  std::cout << std::endl;
+  print_mem(ctx.get_mem(), cpu::mem::in(ctx.get_reg().pc.get()));
 }

@@ -1,7 +1,9 @@
+#include <cassert>
 #include <cpu/core/context.hpp>
 #include <cpu/core/reg_table.hpp>
 #include <cpu/mem/extract.hpp>
 #include <cpu/mem/mem.hpp>
+#include <cpu/util/assert.hpp>
 #include <utility>
 
 namespace cpu::core {
@@ -20,8 +22,26 @@ Ctx Ctx::create() {
 void Ctx::_init_registers() {
   registers_ = core::RegTable{};
 
-  registers_.program_counter = mem::Reg::with_label("pc");
-  registers_.program_counter.describe("Program counter");
+  registers_.pc = mem::Reg::with_label("pc");
+  registers_.pc.describe("Program counter");
+
+  registers_.cmp = mem::Reg::with_label("cmp");
+  registers_.cmp.describe("Comparator");
+
+  registers_.a0 = mem::Reg::with_label("a0");
+  registers_.a0.describe("Accumulator");
+
+  registers_.a1 = mem::Reg::with_label("a1");
+  registers_.a1.describe("Accumulator");
+
+  registers_.lhs = mem::Reg::with_label("lhs");
+  registers_.lhs.describe("Left hand side");
+
+  registers_.rhs = mem::Reg::with_label("rhs");
+  registers_.rhs.describe("Right hand side");
+
+  registers_.dst = mem::Reg::with_label("dst");
+  registers_.dst.describe("Destination");
 }
 
 Ctx::Ctx(Ctx &&other)

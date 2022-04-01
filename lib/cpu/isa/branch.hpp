@@ -32,6 +32,7 @@ template <typename InstrT> bool is_instr_consumed(InstrT const &instr) {
  */
 struct Br {
   mem::Addr addr_;
+
   int consume_hint = 1;
 
   static Br prepare(mem::Addr addr);
@@ -74,11 +75,15 @@ struct Ret {
  * Spec : if lhs.content = rhs.content -> branch to addr
  */
 struct Beq {
+  mem::Addr addr_;
   int consume_hint = 1;
 
-  static Beq prepare(mem::Addr addr, mem::Reg const &lhs, mem::Reg const &rhs);
+  static Beq prepare(mem::Addr addr);
 
   void operator()(core::Ctx &ctx);
+
+  void impl(mem::Byte pc_handle, mem::Byte cmp_handle, std::size_t bytes_count,
+            mem::Byte lhs, mem::Byte rhs);
 };
 
 /**
@@ -88,11 +93,15 @@ struct Beq {
  * Spec : if lhs.content != rhs.content -> branch to addr
  */
 struct Bne {
+  mem::Addr addr_;
   int consume_hint = 1;
 
-  static Bne prepare(mem::Addr addr, mem::Reg const &lhs, mem::Reg const &rhs);
+  static Bne prepare(mem::Addr addr);
 
   void operator()(core::Ctx &ctx);
+
+  void impl(mem::Byte pc_handle, mem::Byte cmp_handle, std::size_t bytes_count,
+            mem::Byte lhs, mem::Byte rhs);
 };
 
 /**
@@ -102,11 +111,15 @@ struct Bne {
  * Spec : if lhs.content > rhs.content -> branch to addr
  */
 struct Bg {
+  mem::Addr addr_;
   int consume_hint = 1;
 
-  static Bg prepare(mem::Addr addr, mem::Reg const &lhs, mem::Reg const &rhs);
+  static Bg prepare(mem::Addr addr);
 
   void operator()(core::Ctx &ctx);
+
+  void impl(mem::Byte pc_handle, mem::Byte cmp_handle, std::size_t bytes_count,
+            mem::Byte lhs, mem::Byte rhs);
 };
 
 /**
@@ -116,11 +129,15 @@ struct Bg {
  * Spec : if lhs.content < lhs.content -> branch to addr
  */
 struct Bs {
+  mem::Addr addr_;
   int consume_hint = 1;
 
-  static Bs prepare(mem::Addr addr, mem::Reg const &lhs, mem::Reg const &rhs);
+  static Bs prepare(mem::Addr addr);
 
   void operator()(core::Ctx &ctx);
+
+  void impl(mem::Byte pc_handle, mem::Byte cmp_handle, std::size_t bytes_count,
+            mem::Byte lhs, mem::Byte rhs);
 };
 
 } // namespace cpu::isa

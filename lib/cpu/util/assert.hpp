@@ -15,7 +15,10 @@
   assert("The given value is not strictly positive." && val > 0)
 
 #define ASSERT_IS_NEGATIVE(val)                                                \
-  assert("The given value is not positive." && val <= 0)
+  assert("The given value is not negative." && val <= 0)
 
 #define ASSERT_IS_STRICTLY_NEGATIVE(val)                                       \
-  assert("The given value is not strictly positive." && val < 0)
+  assert("The given value is not strictly negative." && val < 0)
+
+#define ASSERT_NOT_NULLPTR(ptr)                                                \
+  assert("The given pointer is nullptr." && ptr != nullptr)
