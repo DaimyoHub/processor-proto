@@ -69,10 +69,10 @@ struct Ret {
 };
 
 /**
- * Branch (if) EQual : Branch to another section of the code if the content of a
- * register is equal to a given value.
+ * Branch (if) EQual : Branch to another section of the code if lhs is equal to
+ * rhs.
  *
- * Spec : if lhs.content = rhs.content -> branch to addr
+ * Spec : if lhs = rhs -> branch to addr
  */
 struct Beq {
   mem::Addr addr_;
@@ -87,10 +87,10 @@ struct Beq {
 };
 
 /**
- * Branch (if) Not Equal : Branch to another section of the code if the content
- * of a register is not equal to a given value.
+ * Branch (if) Not Equal : Branch to another section of the code if lhs is not
+ * equal to rhs.
  *
- * Spec : if lhs.content != rhs.content -> branch to addr
+ * Spec : if lhs != rhs -> branch to addr
  */
 struct Bne {
   mem::Addr addr_;
@@ -105,10 +105,10 @@ struct Bne {
 };
 
 /**
- * Branch (if) Greater : Branch to another section of the code if the content of
- * a register is greater than a given value.
+ * Branch (if) Greater : Branch to another section of the code if lhs is greater
+ * than rhs.
  *
- * Spec : if lhs.content > rhs.content -> branch to addr
+ * Spec : if lhs > rhs -> branch to addr
  */
 struct Bg {
   mem::Addr addr_;
@@ -123,16 +123,52 @@ struct Bg {
 };
 
 /**
- * Branch (if) Smaller : Branch to another section of the code if the content of
- * a register is smaller than a given value.
+ * Branch (if) Smaller : Branch to another section of the code if lhs is smaller
+ * than rhs.
  *
- * Spec : if lhs.content < lhs.content -> branch to addr
+ * Spec : if lhs < lhs -> branch to addr
  */
 struct Bs {
   mem::Addr addr_;
   int consume_hint = 1;
 
   static Bs prepare(mem::Addr addr);
+
+  void operator()(core::Ctx &ctx);
+
+  void impl(mem::Byte pc_handle, mem::Byte cmp_handle, std::size_t bytes_count,
+            mem::Byte lhs, mem::Byte rhs);
+};
+
+/**
+ * Branch (if) Greater or Equal : Branch to another section of the code if the
+ * content of lhs is greater or equal rhs.
+ *
+ * Spec : if lhs >= rhs -> branch to addr
+ */
+struct Bge {
+  mem::Addr addr_;
+  int consume_hint = 1;
+
+  static Bge prepare(mem::Addr addr);
+
+  void operator()(core::Ctx &ctx);
+
+  void impl(mem::Byte pc_handle, mem::Byte cmp_handle, std::size_t bytes_count,
+            mem::Byte lhs, mem::Byte rhs);
+};
+
+/**
+ * Branch (if) Smaller or Equal : Branch to another section of the code if the
+ * content of lhs is smaller or equal rhs.
+ *
+ * Spec : if lhs <= rhs -> branch to addr
+ */
+struct Bse {
+  mem::Addr addr_;
+  int consume_hint = 1;
+
+  static Bse prepare(mem::Addr addr);
 
   void operator()(core::Ctx &ctx);
 
