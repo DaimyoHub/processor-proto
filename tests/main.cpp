@@ -22,12 +22,29 @@
 
 using namespace cpu;
 
-// BR 22
+/*
+ * main:
+ *   ld a0, 1
+ *   ld a1, 23
+ *   ld a2, 40
+ *   br proc
+ *
+ * end:
+ *   str 0x05, a0
+ *   end
+ *
+ * proc:
+ *   add a3, a0, a1
+ *   be end, a3, a2
+ *   inc a0
+ *   br proc
+ */
 
 int main() {
   auto ctx = core::Ctx::create();
 
   isa::Ld::prepare(ctx)(ctx.get_reg().a0, 78);
+  isa::Str::prepare(ctx)(ctx.get_mem()[23], 78);
 
   print_ctx(ctx);
 }
