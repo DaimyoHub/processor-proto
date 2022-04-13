@@ -17,8 +17,6 @@ int main();
 namespace cpu::core {
 
 class Ctx {
-  friend int ::main();
-
 private:
   mem::Mem memory_;
   mem::Mem code_;

@@ -37,6 +37,13 @@ public:
    */
   static Addr from(int raw_addr);
 
+  /**
+   * Constructs a default address.
+   *
+   * @return Addr
+   */
+  static Addr def();
+
 public:
   /**
    * Gets the raw address contained in the box.

@@ -29,10 +29,12 @@ struct RegTable {
   mem::Reg cmp; // see CmpState
   mem::Reg a0;
   mem::Reg a1;
+  mem::Reg addr;
 
   mem::Reg lhs;
   mem::Reg rhs;
   mem::Reg dst;
+  mem::Reg src;
 };
 
 } // namespace cpu::core

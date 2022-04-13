@@ -28,4 +28,6 @@ Addr &Addr::operator=(Addr const &other) {
   return *this;
 }
 
+Addr Addr::def() { return Addr::from(0); }
+
 } // namespace cpu::mem

@@ -28,7 +28,11 @@ Reg &Reg::operator=(Reg &&other) {
 
 ROByte Reg::get() const { return ROByte::from_ptr(&value_); }
 
+Reg::operator ROByte() const { return get(); }
+
 Byte Reg::get() { return Byte::from_ptr(&value_); }
+
+Reg::operator Byte() { return get(); }
 
 std::string const &Reg::get_description() const { return description_; }
 

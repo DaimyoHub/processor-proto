@@ -9,5 +9,5 @@
 
 #pragma once
 
-#include <cpu/core/context.hpp>
+#include <cpu/core/ctx.hpp>
 #include <cpu/core/reg_table.hpp>

@@ -1,5 +1,6 @@
+#include "cpu/mem/reg.hpp"
 #include <cassert>
-#include <cpu/core/context.hpp>
+#include <cpu/core/ctx.hpp>
 #include <cpu/core/reg_table.hpp>
 #include <cpu/mem/extract.hpp>
 #include <cpu/mem/mem.hpp>
@@ -42,6 +43,12 @@ void Ctx::_init_registers() {
 
   registers_.dst = mem::Reg::with_label("dst");
   registers_.dst.describe("Destination");
+
+  registers_.addr = mem::Reg::with_label("addr");
+  registers_.addr.describe("Address");
+
+  registers_.src = mem::Reg::with_label("src");
+  registers_.src.describe("Source");
 }
 
 Ctx::Ctx(Ctx &&other)

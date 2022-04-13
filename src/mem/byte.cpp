@@ -26,6 +26,8 @@ ROByte &ROByte::operator=(ROByte &&other) {
   return *this;
 }
 
+ROByte ROByte::def() { return ROByte::from_ptr(nullptr); }
+
 Byte::Byte(Byte &&other) : raw_byte_(other.raw_byte_) {}
 
 Byte &Byte::operator=(Byte &&other) {
@@ -46,5 +48,7 @@ ROByte &ROByte::operator=(ROByte const &other) {
   raw_byte_ = other.raw_byte_;
   return *this;
 }
+
+Byte Byte::def() { return Byte::from_ptr(nullptr); }
 
 } // namespace cpu::mem

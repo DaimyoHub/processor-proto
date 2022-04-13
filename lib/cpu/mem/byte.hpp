@@ -47,6 +47,13 @@ public:
    * @return ROByte
    */
   static ROByte from_ptr(util::ObsPtr<int const> ptr);
+
+  /**
+   * Constructs a default null byte.
+   *
+   * @return ROByte
+   */
+  static ROByte def();
 };
 
 /**
@@ -80,6 +87,13 @@ public:
    * @return Byte
    */
   static Byte from_ptr(util::ObsPtr<int> ptr);
+
+  /**
+   * Constructs a default null byte.
+   *
+   * @return Byte
+   */
+  static Byte def();
 };
 
 } // namespace cpu::mem

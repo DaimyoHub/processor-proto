@@ -50,11 +50,21 @@ public:
   ROByte get() const;
 
   /**
+   * @see cpu::mem::Reg::get()
+   */
+  operator ROByte() const;
+
+  /**
    * @see ROByte cpu::mem::Reg::get() const
    *
    * @return Byte
    */
   Byte get();
+
+  /**
+   * @see cpu::mem::Reg::get()
+   */
+  operator Byte();
 
   /**
    * Gets the description of the register.
