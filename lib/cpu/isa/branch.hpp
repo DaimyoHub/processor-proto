@@ -27,8 +27,7 @@ struct Br {
 
   static Br prepare(core::Ctx &ctx);
 
-  void reg();
-  void val(mem::Addr addr);
+  void operator()(mem::Addr addr);
 
   void _exc_impl(mem::Addr addr);
 };
@@ -44,8 +43,7 @@ struct Call {
 
   static Call prepare(core::Ctx &ctx);
 
-  void reg();
-  void val(mem::Addr addr);
+  void operator()(mem::Addr addr);
 
   void _exc_impl(mem::Addr addr);
 };

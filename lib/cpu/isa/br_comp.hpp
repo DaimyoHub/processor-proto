@@ -38,8 +38,7 @@ struct Beq {
 
   static Beq prepare(core::Ctx &ctx);
 
-  void reg();
-  void val(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
+  void operator()(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
 
   void _exc_impl(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
 };
@@ -56,8 +55,7 @@ struct Bne {
 
   static Bne prepare(core::Ctx &ctx);
 
-  void reg();
-  void val(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
+  void operator()(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
 
   void _exc_impl(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
 };
@@ -74,8 +72,7 @@ struct Bg {
 
   static Bg prepare(core::Ctx &ctx);
 
-  void reg();
-  void val(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
+  void operator()(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
 
   void _exc_impl(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
 };
@@ -92,8 +89,7 @@ struct Bs {
 
   static Bs prepare(core::Ctx &ctx);
 
-  void reg();
-  void val(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
+  void operator()(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
 
   void _exc_impl(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
 };
@@ -110,8 +106,7 @@ struct Bge {
 
   static Bge prepare(core::Ctx &ctx);
 
-  void reg();
-  void val(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
+  void operator()(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
 
   void _exc_impl(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
 };
@@ -128,8 +123,7 @@ struct Bse {
 
   static Bse prepare(core::Ctx &ctx);
 
-  void reg();
-  void val(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
+  void operator()(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
 
   void _exc_impl(mem::Addr addr, mem::Byte lhs, mem::Byte rhs);
 };

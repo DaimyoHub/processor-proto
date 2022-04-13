@@ -39,17 +39,7 @@ void Beq::_exc_impl(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
   consume_hint--;
 }
 
-void Beq::reg() {
-  using bt = mem::Byte;
-
-  bt lhs = ctx.get_reg().lhs;
-  bt rhs = ctx.get_reg().rhs;
-  bt addr = ctx.get_reg().addr;
-
-  _exc_impl(mem::Addr::from(mem::in(addr)), lhs, rhs);
-}
-
-void Beq::val(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
+void Beq::operator()(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
   _exc_impl(addr, lhs, rhs);
 }
 
@@ -74,17 +64,7 @@ void Bne::_exc_impl(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
   consume_hint--;
 }
 
-void Bne::reg() {
-  using bt = mem::Byte;
-
-  bt lhs = ctx.get_reg().lhs;
-  bt rhs = ctx.get_reg().rhs;
-  bt addr = ctx.get_reg().addr;
-
-  _exc_impl(mem::Addr::from(mem::in(addr)), lhs, rhs);
-}
-
-void Bne::val(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
+void Bne::operator()(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
   _exc_impl(addr, lhs, rhs);
 }
 
@@ -109,17 +89,7 @@ void Bg::_exc_impl(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
   consume_hint--;
 }
 
-void Bg::reg() {
-  using bt = mem::Byte;
-
-  bt lhs = ctx.get_reg().lhs;
-  bt rhs = ctx.get_reg().rhs;
-  bt addr = ctx.get_reg().addr;
-
-  _exc_impl(mem::Addr::from(mem::in(addr)), lhs, rhs);
-}
-
-void Bg::val(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
+void Bg::operator()(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
   _exc_impl(addr, lhs, rhs);
 }
 
@@ -144,17 +114,7 @@ void Bs::_exc_impl(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
   consume_hint--;
 }
 
-void Bs::reg() {
-  using bt = mem::Byte;
-
-  bt lhs = ctx.get_reg().lhs;
-  bt rhs = ctx.get_reg().rhs;
-  bt addr = ctx.get_reg().addr;
-
-  _exc_impl(mem::Addr::from(mem::in(addr)), lhs, rhs);
-}
-
-void Bs::val(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
+void Bs::operator()(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
   _exc_impl(addr, lhs, rhs);
 }
 
@@ -179,17 +139,7 @@ void Bge::_exc_impl(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
   consume_hint--;
 }
 
-void Bge::reg() {
-  using bt = mem::Byte;
-
-  bt lhs = ctx.get_reg().lhs;
-  bt rhs = ctx.get_reg().rhs;
-  bt addr = ctx.get_reg().addr;
-
-  _exc_impl(mem::Addr::from(mem::in(addr)), lhs, rhs);
-}
-
-void Bge::val(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
+void Bge::operator()(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
   _exc_impl(addr, lhs, rhs);
 }
 
@@ -214,17 +164,7 @@ void Bse::_exc_impl(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
   consume_hint--;
 }
 
-void Bse::reg() {
-  using bt = mem::Byte;
-
-  bt lhs = ctx.get_reg().lhs;
-  bt rhs = ctx.get_reg().rhs;
-  bt addr = ctx.get_reg().addr;
-
-  _exc_impl(mem::Addr::from(mem::in(addr)), lhs, rhs);
-}
-
-void Bse::val(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
+void Bse::operator()(mem::Addr addr, mem::Byte lhs, mem::Byte rhs) {
   _exc_impl(addr, lhs, rhs);
 }
 
