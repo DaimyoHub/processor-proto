@@ -1,1 +1,1 @@
-A basic CPU for school project. That's it.
+A basic CPU for school project.
