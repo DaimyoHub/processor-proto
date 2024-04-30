@@ -1,1 +1,1 @@
-A basic CPU for school project.
+A basic CPU interpretating a custom ASM architecture.
